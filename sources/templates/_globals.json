@@ -1,0 +1,13 @@
+{
+  "globals": {
+    "meta": {
+      "title": "Smart Mirror 2.0",
+      "description": "",
+      "viewport": "width=device-width, initial-scale=1, maximum-scale=1",
+      "favicon": "../img/favicon.ico"
+    },
+    "sitemap": {
+      "index": "index.html"
+    }
+  }
+}

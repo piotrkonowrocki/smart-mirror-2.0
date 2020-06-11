@@ -1,0 +1,42 @@
+{
+  "name": "smart-mirror-2.0",
+  "version": "1.0.0",
+  "description": "Smart mirror",
+  "author": "Piotr Konowrocki",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piotrkonowrocki/smart-mirror-2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.10.2",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "chalk": "^4.1.0",
+    "core-js": "^2.6.11",
+    "del": "^5.1.0",
+    "eslint": "^7.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-inject": "^5.0.5",
+    "gulp-load-plugins": "^2.0.3",
+    "gulp-newer": "^1.4.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-twig": "^1.2.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^5.0.1",
+    "imagemin-pngquant": "^9.0.0",
+    "webpack": "^4.43.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
