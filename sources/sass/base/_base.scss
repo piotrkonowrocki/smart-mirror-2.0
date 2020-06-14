@@ -5,8 +5,8 @@
 }
 
 ::selection {
-    background-color: $color-black;
-    color: $color-white;
+    background-color: $color-white;
+    color: $color-black;
 }
 
 a:focus,
@@ -28,8 +28,18 @@ body {
     height: 100%;
 }
 
+html {
+    font-size: 1px;
+}
+
 body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-    background-color: $color-black;
+    background-color: $color-bg;
+    color: $color-primary;
+    font-family: $font-default-sans-serif;
+    line-height: 1.2;
+    overflow: hidden;
+}
+
+p {
+    margin: 0;
 }

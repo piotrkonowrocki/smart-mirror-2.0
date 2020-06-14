@@ -26,9 +26,8 @@ module.exports = class Tasks {
         return new Promise(resolve => {
             gulp.src(paths.getPath('stylesSource') + config.files.stylesSource)
                 .pipe(plugins.if(this.mode !== 'fast', plugins.sourcemaps.init()))
-                .pipe(plugins.sass({
-                    includePaths: ['node_modules']
-                }))
+                .pipe(plugins.sassGlob())
+                .pipe(plugins.sass())
                 .pipe(plugins.if(this.mode !== 'fast', plugins.autoprefixer({
                     cascade: false,
                     remove: true,
@@ -142,6 +141,43 @@ module.exports = class Tasks {
         });
     }
 
+    handleWidgetsSettings() {
+        timer.register('handleWidgetsSettings');
+
+        return new Promise(resolve => {
+            gulp.src(`${paths.getPath('widgetsSource')}${config.files.widgetsSettings}`)
+                .pipe(gulp.dest(paths.getPath('widgetsTemp')))
+                .on('end', () => {
+                    log.print(`✔ Finished moving widgets settings in ${timer.get('handleWidgetsSettings')}`);
+                    resolve();
+                });
+        });
+    }
+
+    handleWidgetsFiles() {
+        timer.register('handleWidgetsTemplates');
+
+        return new Promise(resolve => {
+            gulp.src([
+                `${paths.getPath('widgetsSource')}**/*.twig`,
+                `${paths.getPath('widgetsSource')}**/*.json`
+            ])
+                .pipe(gulp.dest(paths.getPath('widgetsTemp')))
+                .on('end', () => {
+                    log.print(`✔ Finished moving widgets files in ${timer.get('handleWidgetsTemplates')}`);
+                    resolve();
+                });
+        });
+    }
+
+    handleWidgets() {
+        return new Promise(resolve => {
+            this.handleWidgetsSettings()
+                .then(this.handleWidgetsFiles.bind(this))
+                .then(resolve);
+        });
+    }
+
     cleanTemp() {
         return new Promise(resolve => {
             del([
@@ -181,11 +217,17 @@ module.exports = class Tasks {
     }
 
     watch() {
-        watch(`${paths.getPath('stylesSource')}**/**`, () => {
+        watch([
+            `${paths.getPath('stylesSource')}**/**`,
+            `${paths.getPath('widgetsSource')}**/*.scss`
+        ], () => {
             this.handleSass()
                 .then(this.publish.bind(this, config.dirs.css.replace('/', '*/')));
         });
-        watch(`${paths.getPath('scriptsSource')}**/**`, () => {
+        watch([
+            `${paths.getPath('scriptsSource')}**/**`,
+            `${paths.getPath('widgetsSource')}**/*.js`
+        ], () => {
             this.cleanChunks()
                 .then(this.cleanChunks.bind(this))
                 .then(this.handleJs.bind(this))
@@ -206,6 +248,17 @@ module.exports = class Tasks {
                     .then(this.publish.bind(this, item.replace('/', '*/')));
             });
         });
+        watch(`${paths.getPath('widgetsSource')}${config.files.widgetsSettings}`, () => {
+            this.handleWidgetsSettings()
+                .then(this.publish.bind(this, config.dirs.widgets.replace('/', '*/')));
+        });
+        watch([
+            `${paths.getPath('widgetsSource')}**/*.twig`,
+            `${paths.getPath('widgetsSource')}**/*.json`
+        ], () => {
+            this.handleWidgetsFiles()
+                .then(this.publish.bind(this, config.dirs.widgets.replace('/', '*/')));
+        });
     }
 
     build() {
@@ -217,6 +270,7 @@ module.exports = class Tasks {
                 .then(this.handleHtml.bind(this))
                 .then(this.handleImages.bind(this))
                 .then(this.handleStaticDirectories.bind(this))
+                .then(this.handleWidgets.bind(this))
                 .then(this.cleanPublic.bind(this))
                 .then(this.publish.bind(this))
                 .then(resolve);

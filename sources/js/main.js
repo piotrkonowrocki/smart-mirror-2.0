@@ -1,4 +1,4 @@
-import StaticComponent from './components/static-component';
+import Mirror from './components/mirror';
 
 class App {
     constructor() {
@@ -6,21 +6,7 @@ class App {
     }
 
     init() {
-        this.initStaticComponent();
-        this.initAsyncComponent();
-    }
-
-    initStaticComponent() {
-        const staticComponent = new StaticComponent();
-
-        staticComponent.printMessage();
-    }
-
-    async initAsyncComponent() {
-        const AsyncComponent = (await import('./components/async-component')).default;
-        const asyncComponent = new AsyncComponent();
-
-        asyncComponent.printMessage();
+        new Mirror();
     }
 }
 

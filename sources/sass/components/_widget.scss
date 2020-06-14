@@ -1,0 +1,7 @@
+.widget {
+    position: relative;
+    font-size: 18rem;
+    & + & {
+        margin-top: 20rem;
+    }
+}

@@ -28,6 +28,12 @@ module.exports = class WebpackHandler {
                     path: path.normalize(paths.getPath('scriptsTemp')),
                     publicPath: `${path.relative(paths.getPath('templatesTemp'), paths.getPath('scriptsTemp'))}/`
                 },
+                resolve: {
+                    alias: {
+                        core: path.normalize(paths.getPath('scriptsSource')),
+                        widgets: path.normalize(paths.getPath('widgetsSource'))
+                    }
+                },
                 devtool: mode !== 'fast' ? 'source-map' : 'none',
                 cache: !(mode === 'production'),
                 optimization: {

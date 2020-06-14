@@ -12,6 +12,7 @@
         "img": "img/",
         "html": "",
         "twig": "templates/",
+        "widgets": "widgets/",
         "static": [
             "data/",
             "fonts/"
@@ -22,7 +23,8 @@
         "scriptsResults": "main.min.js",
         "stylesSource": "main.scss",
         "stylesResults": "main.min.css",
-        "twigGlobals": "_globals.json"
+        "twigGlobals": "_globals.json",
+        "widgetsSettings": "settings.json"
     },
     "settings": {
         "twig": true

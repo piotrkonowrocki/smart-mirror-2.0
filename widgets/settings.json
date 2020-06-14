@@ -1,0 +1,13 @@
+{
+    "widgets": [
+        {
+            "name": "weather",
+            "settings": {
+                "region": ["top", "right"],
+                "cityId": "756135",
+                "units": "metric",
+                "lang": "pl"
+            }
+        }
+    ]
+}

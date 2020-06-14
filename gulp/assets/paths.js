@@ -28,6 +28,9 @@ module.exports = class Paths {
             templatesSource: this.root + config.paths.sources + config.dirs.twig,
             templatesTemp: this.root + config.paths.sources + config.paths.temp + config.dirs.html,
             templatesResult: this.root + config.paths.results + config.dirs.html,
+            widgetsSource: this.root + config.dirs.widgets,
+            widgetsTemp: this.root + config.paths.sources + config.paths.temp + config.dirs.widgets,
+            widgetsResult: this.root + config.paths.results + config.dirs.widgets,
             temp: this.root + config.paths.sources + config.paths.temp,
             public: this.root + config.paths.results
         };

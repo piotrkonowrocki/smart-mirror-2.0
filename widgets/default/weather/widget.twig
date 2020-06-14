@@ -1,0 +1,13 @@
+<div class="widget-weather__summary">
+    <i class="wi {{ data.icon }}"></i><span class="widget-weather__summary__degrees">{{ data.main.temp }}</span>&deg;
+</div>
+<div class="widget-weather__description">
+    <p>{{ data.weather.description }}</p>
+</div>
+<div class="widget-weather__miscellaneous">
+    <i class="wi wi-strong-wind"></i> <span class="widget-weather__miscellaneous__wind">{{ data.wind.speed }}</span> km/h <i class="wi wi-wind-direction" style="transform:rotate({{ data.wind.deg }}deg);"></i>
+    <span class="widget-weather__miscellaneous__separator">&bull;</span>
+    <i class="wi wi-barometer"></i> <span class="widget-weather__miscellaneous__pressure">{{ data.main.pressure }}</span> hPa
+    <span class="widget-weather__miscellaneous__separator">&bull;</span>
+    <i class="wi wi-humidity"></i> <span class="widget-weather__miscellaneous__humidity">{{ data.main.humidity }}</span>%
+</div>

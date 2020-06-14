@@ -2,6 +2,7 @@
 @import './utils/variables';
 
 @import '../../node_modules/normalize.css/normalize';
+@import './vendors/weather-icons';
 
 @import './base/base';
 @import './base/typography';
@@ -9,3 +10,5 @@
 
 @import './components/mirror';
 @import './components/region';
+@import './components/widget';
+@import '../../widgets/**/*';

@@ -1,0 +1,17 @@
+.widget-weather {
+    &__summary {
+        font-size: $font-size-emphasis;
+        .wi {
+            margin-right: 20rem;
+        }
+    }
+    &__description {
+        margin-top: 4rem;
+        color: $color-faded;
+    }
+    &__miscellaneous {
+        margin-top: 4rem;
+        font-size: $font-size-small;
+        color: $color-faded;
+    }
+}
