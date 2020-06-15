@@ -2,7 +2,8 @@ import WidgetPrototype from 'core/components/widget-prototype.js';
 import leftPad from 'left-pad';
 
 const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
-const months = ['stycznia',
+const months = [
+    'stycznia',
     'lutego',
     'marca',
     'kwietnia',
@@ -13,7 +14,8 @@ const months = ['stycznia',
     'września',
     'października',
     'listopada',
-    'grudnia'];
+    'grudnia'
+];
 
 class Widget extends WidgetPrototype {
     constructor(name, settings) {
