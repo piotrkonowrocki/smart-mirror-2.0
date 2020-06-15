@@ -37,14 +37,12 @@ class Widget extends WidgetPrototype {
         };
     }
 
-    parseData(data) {
-        if (data.weather[0]) data.weather = data.weather[0];
-        data.main.temp = data.main.temp.toFixed(1);
-        data.wind.speed = (data.wind.speed * 3.6).toFixed(1);
-        data.wind.deg -= 180;
-        data.icon = this.getIcon(data.weather.icon);
-
-        return data;
+    parseData() {
+        if (this.data.weather[0]) this.data.weather = this.data.weather[0];
+        this.data.main.temp = this.data.main.temp.toFixed(1);
+        this.data.wind.speed = (this.data.wind.speed * 3.6).toFixed(1);
+        this.data.wind.deg -= 180;
+        this.data.icon = this.getIcon(this.data.weather.icon);
     }
 
     getIcon(id) {

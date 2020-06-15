@@ -1,6 +1,12 @@
 {
     "widgets": [
         {
+            "name": "clock",
+            "settings": {
+                "region": ["top", "left"]
+            }
+        },
+        {
             "name": "weather",
             "settings": {
                 "region": ["top", "right"],

@@ -1,0 +1,17 @@
+.widget-clock {
+    &__time {
+        font-size: 0;
+        &__hours,
+        &__separator,
+        &__minutes {
+            font-size: $font-size-emphasis;
+        }
+        &__seconds {
+            position: relative;
+            top: -18rem;
+            left: 5rem;
+            font-size: 26rem;
+            color: $color-faded;
+        }
+    }
+}

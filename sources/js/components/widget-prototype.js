@@ -1,3 +1,5 @@
+import deepExtend from 'deep-extend';
+import schedule from 'node-schedule';
 import queryString from 'query-string';
 import twigHandler from '../base/twig-handler';
 
@@ -5,15 +7,28 @@ class WidgetPrototype {
     constructor(name, settings, params) {
         this.name = name;
         this.settings = settings;
-        this.params = params;
+        this.params = deepExtend({
+            loop: [
+                ['*/30 * * * *'],
+                ['0 0 * * *']
+            ]
+        }, params);
 
         this.init();
     }
 
     async init() {
         this.renderWrapper();
-        await this.loadCredentials();
-        await this.loadData();
+        if (this.params.credentials) await this.loadCredentials();
+        if (this.params.url) await this.loadData();
+        this.parseData();
+        await this.renderContent();
+        this.loop();
+    }
+
+    async refresh() {
+        if (this.params.url) await this.loadData();
+        this.parseData();
         await this.renderContent();
     }
 
@@ -37,14 +52,24 @@ class WidgetPrototype {
         let data = await fetch(`${this.params.url}?${query}`);
 
         data = await data.json();
-        data = this.parseData(data);
         this.data = data;
+    }
+
+    parseData() {
+        if (this.data === null) this.data = {};
     }
 
     async renderContent() {
         const content = await twigHandler.render(`/widgets/default/${this.name}/widget.twig`, this.data);
 
         this.widgetWrapper.innerHTML = content;
+        this.widgetWrapper.classList.add('widget--loaded');
+    }
+
+    loop() {
+        this.params.loop.forEach(schema => {
+            schedule.scheduleJob(schema, this.refresh.bind(this));
+        });
     }
 
     getQuery(queryObject) {
@@ -55,10 +80,6 @@ class WidgetPrototype {
         });
 
         return queryString.stringify(query);
-    }
-
-    parseData(data) {
-        return data;
     }
 }
 

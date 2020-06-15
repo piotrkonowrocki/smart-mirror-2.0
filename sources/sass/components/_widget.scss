@@ -1,7 +1,12 @@
 .widget {
     position: relative;
     font-size: 18rem;
+    opacity: 0;
+    transition: opacity 300ms;
     & + & {
         margin-top: 20rem;
+    }
+    &--loaded {
+        opacity: 1;
     }
 }
