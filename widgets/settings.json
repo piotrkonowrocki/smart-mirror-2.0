@@ -15,6 +15,19 @@
             }
         },
         {
+            "name": "currency",
+            "settings": {
+                "region": ["bottom", "left"],
+                "base": {
+                    "PLN": "PL"
+                },
+                "ratings": {
+                    "USD": "US",
+                    "EUR": "EU"
+                }
+            }
+        },
+        {
             "name": "weather",
             "settings": {
                 "region": ["top", "right"],

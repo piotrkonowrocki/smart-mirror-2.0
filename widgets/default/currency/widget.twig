@@ -1,0 +1,16 @@
+<ul class="widget-currency__list">
+    {% for symbol, currency in data.currencies %}
+        <li class="widget-currency__list__item">
+            <img class="widget-currency__list__item__flag" src="https://www.countryflags.io/{{ currency.country }}/flat/24.png" />
+            {{ symbol }}: {{ currency.value }}
+            <span class="widget-currency__list__item__diff">
+                {% if currency.growth %}
+                    <i class="wi wi-direction-up"></i>
+                {% else %}
+                    <i class="wi wi-direction-down"></i>
+                {% endif %}
+                {{ currency.diff }}%
+            </span>
+        </li>
+    {% endfor %}
+</ul>

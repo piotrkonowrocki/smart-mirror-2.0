@@ -1,0 +1,21 @@
+.widget-currency {
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        &__item {
+            position: relative;
+            padding-left: 30rem;
+            &__flag {
+                position: absolute;
+                top: -2rem;
+                left: 0;
+                width: 24rem;
+                filter: grayscale(1) brightness(1.25);
+            }
+            &__diff {
+                color: $color-faded;
+            }
+        }
+    }
+}
