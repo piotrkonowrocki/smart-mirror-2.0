@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 30%;
     margin: 20rem;
     &--top {
         top: 0;
@@ -13,6 +13,7 @@
     &--right {
         right: 0;
         align-items: flex-end;
+        text-align: right;
     }
     &--left {
         left: 0;

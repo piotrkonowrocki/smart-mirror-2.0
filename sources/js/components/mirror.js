@@ -17,14 +17,14 @@ class Mirror {
 
     loadWidgets(settings) {
         settings.widgets.forEach(widget => {
-            this.initWidget(widget.name, widget.settings);
+            this.initWidget(settings, widget.name, widget.settings);
         });
     }
 
-    async initWidget(name, settings) {
+    async initWidget(globals, name, settings) {
         const Widget = (await import(`widgets/default/${name}/widget`)).default;
 
-        new Widget(name, settings);
+        new Widget(globals, name, settings);
     }
 }
 

@@ -1,0 +1,24 @@
+<ul class="widget-news__list">
+{% for i, item in data.channel[0].item %}
+    {% if i == 0 %}
+        {% set itemClass = 'widget-news__list__item--active' %}
+    {% else %}
+        {% set itemClass = 'widget-news__list__item--next' %}
+    {% endif %}
+
+    <li class="widget-news__list__item">
+        <p class="widget-news__list__item__title">{{ item.title[0] }}</p>
+        <p class="widget-news__list__item__description">{{ item.description[0] }}</p>
+    </li>
+{% endfor %}
+</ul>
+<div class="widget-news__meta">
+    <div class="widget-news__meta__counter">
+        <div class="widget-news__meta__counter__svg">
+            <svg viewBox="-1 -1 2 2"></svg>
+        </div>
+    </div>
+    <p class="widget-news__meta__steps">
+        <span class="widget-news__meta__steps__current">1</span> z <span class="widget-news__meta__steps__max">{{ data.channel[0].item|length }}</span>
+    </p>
+</div>

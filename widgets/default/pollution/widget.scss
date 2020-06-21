@@ -1,0 +1,16 @@
+.widget-pollution {
+    &__measurements {
+        margin: 4rem 0 0;
+        padding: 0;
+        list-style: none;
+        &__item {
+            font-size: $font-size-small;
+            & + & {
+                padding-top: 2rem;
+            }
+            &__value {
+                color: $color-faded;
+            }
+        }
+    }
+}

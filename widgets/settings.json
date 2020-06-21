@@ -1,9 +1,17 @@
 {
+    "corsService": "https://api.codetabs.com/v1/proxy?quest=",
     "widgets": [
         {
             "name": "clock",
             "settings": {
                 "region": ["top", "left"]
+            }
+        },
+        {
+            "name": "news",
+            "settings": {
+                "region": ["bottom", "left"],
+                "displayTime": 10000
             }
         },
         {
@@ -13,6 +21,23 @@
                 "cityId": "756135",
                 "units": "metric",
                 "lang": "pl"
+            }
+        },
+        {
+            "name": "forecast",
+            "settings": {
+                "region": ["top", "right"],
+                "cityId": "756135",
+                "units": "metric",
+                "lang": "pl",
+                "days": 5
+            }
+        },
+        {
+            "name": "pollution",
+            "settings": {
+                "region": ["top", "right"],
+                "installationId": "29"
             }
         }
     ]

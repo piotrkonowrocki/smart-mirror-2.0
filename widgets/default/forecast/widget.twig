@@ -1,0 +1,40 @@
+<div class="widget-forecast__chart">
+    <svg style="height:{{ data.chart.stats.height }}rem;">
+        {% for day in data.chart.data %}
+            <line
+                x1="{{ day.x1 }}%"
+                y1="{{ day.y1 }}%"
+                x2="{{ day.x2 }}%"
+                y2="{{ day.y2 }}%"
+                style="stroke:rgb(255, 255, 255); stroke-width: 2rem;" />
+            <circle
+                cx="{{ day.x1 }}%"
+                cy="{{ day.y1 }}%"
+                r="1.2%"
+                fill="rgb(0, 0, 0)"
+                style="stroke:rgb(255, 255, 255); stroke-width: 2rem;" />
+            {% if loop.last %}
+                <circle
+                    cx="{{ day.x2 }}%"
+                    cy="{{ day.y2 }}%"
+                    r="1.2%"
+                    fill="rgb(0, 0, 0)"
+                    style="stroke:rgb(255, 255, 255); stroke-width: 2rem;" />
+            {% endif %}
+        {% endfor %}
+    </svg>
+</div>
+<table class="widget-forecast__table">
+    <tbody>
+    {% for day in data.list %}
+        <tr>
+            <td class="widget-forecast__table__day">{{ day.name }}</td>
+            <td class="widget-forecast__table__icon"><i class="wi {{ day.icon }}"></i></td>
+            <td class="widget-forecast__table__degrees-day">{{ day.temp.day }}&deg;</td>
+            <td class="widget-forecast__table__degrees-night">{{ day.temp.night }}&deg;</td>
+            <td class="widget-forecast__table__wind-icon"><i class="wi wi-strong-wind"></i></td>
+            <td class="widget-forecast__table__wind-value">{{ day.speed }} km/h</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

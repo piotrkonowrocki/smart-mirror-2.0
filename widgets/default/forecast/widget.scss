@@ -1,0 +1,44 @@
+.widget-forecast {
+    .widget-forecast__chart {
+        margin-bottom: 10rem;
+        svg {
+            width: 300rem;
+            display: inline-block;
+        }
+    }
+    .widget-forecast__table {
+        display: inline-block;
+        font-size: $font-size-small;
+        text-align: left;
+        td {
+            padding: 0 0 0 8rem;
+            &.widget-forecast__table__day {
+                padding-left: 0;
+                text-align: right;
+                text-transform: capitalize;
+            }
+            &.widget-forecast__table__icon {
+                text-align: center;
+            }
+            &.widget-forecast__table__degrees-night {
+                padding-left: 2rem;
+                color: $color-faded;
+            }
+            &.widget-forecast__table__wind-icon,
+            &.widget-forecast__table__wind-value {
+                color: $color-faded;
+            }
+            &.widget-forecast__table__wind-value {
+                padding-left: 0;
+                text-align: right;
+            }
+        }
+        tr {
+            &:last-child {
+                td {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}
