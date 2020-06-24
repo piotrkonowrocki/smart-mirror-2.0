@@ -5,3 +5,4 @@ node_modules
 /public/*
 /sources/_temp
 credentials.json
+widgets/settings.json
