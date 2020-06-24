@@ -23,8 +23,6 @@ const icons = {
     '50n': 'wi-fog'
 };
 
-moment.locale('pl');
-
 class Widget extends WidgetPrototype {
     constructor(globals, name, settings) {
         super(globals, name, settings, {

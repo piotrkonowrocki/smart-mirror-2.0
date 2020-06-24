@@ -1,3 +1,4 @@
+import moment from 'moment';
 import deepExtend from 'deep-extend';
 import schedule from 'node-schedule';
 import queryString from 'query-string';
@@ -15,6 +16,7 @@ class WidgetPrototype {
             ]
         }, params);
 
+        moment.locale(globals.locale);
         this.init();
     }
 

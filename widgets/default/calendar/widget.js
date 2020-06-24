@@ -2,8 +2,6 @@
 import WidgetPrototype from 'core/components/widget-prototype.js';
 import moment from 'moment';
 
-moment.locale('pl');
-
 class Widget extends WidgetPrototype {
     constructor(globals, name, settings) {
         super(globals, name, settings, {
