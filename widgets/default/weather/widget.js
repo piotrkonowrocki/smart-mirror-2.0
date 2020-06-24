@@ -45,6 +45,7 @@ class Widget extends WidgetPrototype {
         this.data.wind.speed = (this.data.wind.speed * 3.6).toFixed(1);
         this.data.wind.deg -= 180;
         this.data.icon = icons[this.data.weather[0].icon];
+        this.data.description = this.data.weather[0].description;
     }
 }
 

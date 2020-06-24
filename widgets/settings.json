@@ -37,6 +37,13 @@
             }
         },
         {
+            "name": "meteoalarm",
+            "settings": {
+                "region": ["top", "right"],
+                "rss": "/pl/PL1465.rss"
+            }
+        },
+        {
             "name": "forecast",
             "settings": {
                 "region": ["top", "right"],

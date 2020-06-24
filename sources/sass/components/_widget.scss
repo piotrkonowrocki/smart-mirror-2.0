@@ -9,4 +9,7 @@
     &--loaded {
         opacity: 1;
     }
+    &:empty {
+        margin: 0;
+    }
 }

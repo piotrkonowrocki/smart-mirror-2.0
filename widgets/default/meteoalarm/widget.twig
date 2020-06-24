@@ -1,0 +1,5 @@
+{% if data.level and data.type %}
+    <div class="widget-meteoalarm__alert">
+        <span class="widget-meteoalarm__alert__icon">&#9650;</span> Ostrzeżenie IMGW, poziom {{ data.level }}: <i class="wi {{ data.type.icon }}"></i> {{ data.type.label }}
+    </div>
+{% endif %}

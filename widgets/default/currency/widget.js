@@ -7,7 +7,6 @@ class Widget extends WidgetPrototype {
             loop: [
                 ['0 * * * *']
             ],
-            credentials: true,
             url: 'https://api.exchangeratesapi.io/history',
             query: {
                 raw: {

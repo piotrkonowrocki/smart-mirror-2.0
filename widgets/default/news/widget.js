@@ -6,12 +6,7 @@ class Widget extends WidgetPrototype {
             loop: [],
             rss: 'https://wiadomosci.gazeta.pl/pub/rss/wiadomosci.htm',
             cors: true,
-            encoding: 'iso-8859-2',
-            headers: {
-                raw: {
-                    'Content-Type': 'text/plain; charset=UTF-8'
-                }
-            }
+            encoding: 'iso-8859-2'
         });
     }
 
