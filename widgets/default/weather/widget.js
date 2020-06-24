@@ -33,7 +33,7 @@ class Widget extends WidgetPrototype {
                 raw: {
                     id: settings.cityId,
                     units: settings.units,
-                    lang: settings.lang
+                    lang: globals.locale
                 },
                 credentials: ['appid']
             }

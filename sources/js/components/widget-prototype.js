@@ -16,13 +16,14 @@ class WidgetPrototype {
             ]
         }, params);
 
-        moment.locale(globals.locale);
+        moment.locale(this.globals.locale);
         this.init();
     }
 
     async init() {
         this.renderWrapper();
         if (this.params.credentials) await this.loadCredentials();
+        if (this.params.locales) await this.loadLocales();
         if (this.params.externalLibrary) await this.loadExternalLibrary();
         if (this.params.url || this.params.rss || this.params.customDataLoader) await this.loadData();
         this.parseData();
@@ -46,6 +47,13 @@ class WidgetPrototype {
         this.widgetWrapper = document.createElement('div');
         this.widgetWrapper.classList.add('widget', `widget-${this.name}`);
         region.appendChild(this.widgetWrapper);
+    }
+
+    async loadLocales() {
+        let locales = await fetch(`/widgets/default/${this.name}/locales.${this.globals.locale}.json`);
+
+        locales = await locales.json();
+        this.locales = locales;
     }
 
     async loadCredentials() {

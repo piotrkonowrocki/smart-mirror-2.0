@@ -1,7 +1,6 @@
 import WidgetPrototype from 'core/components/widget-prototype.js';
 import moment from 'moment';
 
-const timeLabels = ['Dziś', 'Jutro', 'Pojutrze'];
 const icons = {
     '01d': 'wi-day-sunny',
     '01n': 'wi-night-clear',
@@ -29,13 +28,14 @@ class Widget extends WidgetPrototype {
             loop: [
                 ['*/5 * * * *']
             ],
+            locales: true,
             credentials: true,
             url: 'https://api.openweathermap.org/data/2.5/forecast/daily',
             query: {
                 raw: {
                     id: settings.cityId,
                     units: settings.units,
-                    lang: settings.lang,
+                    lang: globals.locale,
                     cnt: 16
                 },
                 credentials: ['appid']
@@ -55,7 +55,10 @@ class Widget extends WidgetPrototype {
         this.data.list.forEach((day, i) => {
             this.data.chart.temp.push(day.temp.day);
 
-            day.name = timeLabels[i] ? timeLabels[i] : today.format('dddd');
+            if (i === 1) day.name = this.locales.tomorrow;
+            else if (i === 2) day.name = this.locales.afterTomorrow;
+            else day.name = today.format('dddd');
+
             day.temp.day = day.temp.day.toFixed(1);
             day.temp.night = day.temp.night.toFixed(1);
             day.speed = (day.speed * 3.6).toFixed(1);
