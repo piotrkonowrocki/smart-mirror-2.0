@@ -1,21 +1,6 @@
 import WidgetPrototype from 'core/components/widget-prototype.js';
+import moment from 'moment';
 import leftPad from 'left-pad';
-
-const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
-const months = [
-    'stycznia',
-    'lutego',
-    'marca',
-    'kwietnia',
-    'maja',
-    'czerwca',
-    'lipca',
-    'sierpnia',
-    'września',
-    'października',
-    'listopada',
-    'grudnia'
-];
 
 class Widget extends WidgetPrototype {
     constructor(globals, name, settings) {
@@ -28,15 +13,13 @@ class Widget extends WidgetPrototype {
 
     parseData() {
         const date = new Date();
+        const today = moment();
 
         this.data = {
             hours: leftPad(date.getHours(), 2, 0),
             minutes: leftPad(date.getMinutes(), 2, 0),
             seconds: leftPad(date.getSeconds(), 2, 0),
-            dayOfWeek: days[date.getDay()],
-            day: date.getDate(),
-            month: months[date.getMonth()],
-            year: date.getFullYear()
+            date: today.format(this.settings.formatDate)
         };
     }
 }
