@@ -160,7 +160,8 @@ module.exports = class Tasks {
         return new Promise(resolve => {
             gulp.src([
                 `${paths.getPath('widgetsSource')}**/*.twig`,
-                `${paths.getPath('widgetsSource')}**/*.json`
+                `${paths.getPath('widgetsSource')}**/*.json`,
+                `!${paths.getPath('widgetsSource')}**/*.schema.*`
             ])
                 .pipe(gulp.dest(paths.getPath('widgetsTemp')))
                 .on('end', () => {

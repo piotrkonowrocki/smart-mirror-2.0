@@ -21,7 +21,8 @@ class WidgetPrototype {
     async init() {
         this.renderWrapper();
         if (this.params.credentials) await this.loadCredentials();
-        if (this.params.url || this.params.rss) await this.loadData();
+        if (this.params.externalLibrary) await this.loadExternalLibrary();
+        if (this.params.url || this.params.rss || this.params.customDataLoader) await this.loadData();
         this.parseData();
         await this.renderContent();
         this.prepareVars();
@@ -30,15 +31,11 @@ class WidgetPrototype {
     }
 
     async refresh() {
-        if (this.params.url || this.params.rss) await this.loadData();
+        if (this.params.url || this.params.rss || this.params.customDataLoader) await this.loadData();
         this.parseData();
         await this.renderContent();
         this.prepareVars();
         this.run();
-    }
-
-    prepareVars() {
-        // extend purposes only
     }
 
     renderWrapper() {
@@ -54,6 +51,31 @@ class WidgetPrototype {
 
         credentials = await credentials.json();
         this.credentials = credentials;
+    }
+
+    loadExternalLibrary() {
+        return new Promise(resolve => {
+            if (!this.externalLibraries) this.externalLibraries = {};
+            if (this.externalLibraries[this.params.externalLibrary.name] !== true) {
+                let interval = {};
+
+                if (this.externalLibraries[this.params.externalLibrary.name] === undefined) {
+                    const script = document.createElement('script');
+
+                    this.externalLibraries[this.params.externalLibrary.name] = false;
+                    script.src = this.params.externalLibrary.url;
+                    document.body.appendChild(script);
+                }
+
+                interval = setInterval(() => {
+                    if (window[this.params.externalLibrary.name]) {
+                        this.externalLibraries[this.params.externalLibrary.name] = true;
+                        clearInterval(interval);
+                        resolve();
+                    }
+                }, 500);
+            }
+        });
     }
 
     async loadData() {
@@ -87,6 +109,10 @@ class WidgetPrototype {
 
         this.widgetWrapper.innerHTML = content;
         this.widgetWrapper.classList.add('widget--loaded');
+    }
+
+    prepareVars() {
+        // extend purposes only
     }
 
     run() {

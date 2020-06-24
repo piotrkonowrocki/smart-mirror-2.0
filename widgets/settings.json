@@ -8,6 +8,28 @@
             }
         },
         {
+            "name": "calendar",
+            "settings": {
+                "region": ["top", "left"],
+                "calendars": [
+                    {
+                        "id": "kadt3p8qroofhnepssoi6bd0g4@group.calendar.google.com"
+                    },
+                    {
+                        "label": "Piotr",
+                        "id": "p.konowrocki@gmail.com"
+                    },
+                    {
+                        "label": "Magda",
+                        "id": "mily.dzien@gmail.com"
+                    },
+                    {
+                        "id": "pl.polish#holiday@group.v.calendar.google.com"
+                    }
+                ]
+            }
+        },
+        {
             "name": "news",
             "settings": {
                 "region": ["bottom", "left"],

@@ -51,7 +51,8 @@ class Widget extends WidgetPrototype {
     constructor(globals, name, settings) {
         super(globals, name, settings, {
             credentials: true,
-            url: 'https://airapi.airly.eu/v2/measurements/installation',
+            url: '/data/pollutions.json',
+            // url: 'https://airapi.airly.eu/v2/measurements/installation',
             headers: {
                 credentials: ['apikey']
             },

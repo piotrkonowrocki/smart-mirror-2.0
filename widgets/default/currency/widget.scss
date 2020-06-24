@@ -14,6 +14,7 @@
                 filter: grayscale(1) brightness(1.25);
             }
             &__diff {
+                font-size: $font-size-small;
                 color: $color-faded;
             }
         }

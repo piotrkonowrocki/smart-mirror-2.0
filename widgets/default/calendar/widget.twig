@@ -1,0 +1,40 @@
+{% for range in data.list %}
+    <div class="widget-calendar__range">
+        <p>{{ range.label }}</p>
+        <ul class="widget-calendar__list">
+            {% if range.events is iterable %}
+                {% for event in range.events %}
+                    <li class="widget-calendar__list__item">
+                        {% if event.label %}
+                            <span class="widget-calendar__list__item__label">
+                                {{ event.label }}:
+                            </span>
+                        {% endif %}
+                        <span class="widget-calendar__list__item__name">
+                            {{ event.summary }}
+                        </span>
+                        {% if event.multiplier > 1 %}
+                            <span class="widget-calendar__list__item__multiplier">
+                                &times; {{event.multiplier }}
+                            </span>
+                        {% endif %}
+                        {% if event.time != false > 1 and range.label != 'Nadchodzące' %}
+                            <span class="widget-calendar__list__item__time">
+                                o {{ event.time }}
+                            </span>
+                        {% endif %}
+                        {% if range.label == 'Nadchodzące' %}
+                            <span class="widget-calendar__list__item__time-left">
+                                {{ event.day }} {{ event.timeLeft }} {% if event.multiplier > 1 %}pierwsze{% endif %}
+                            </span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="widget-calendar__list__item--empty">
+                    <span class="widget-calendar__list__item__no-events">{{ range.events }}</span>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endfor %}
