@@ -5,6 +5,7 @@ import moment from 'moment';
 class Widget extends WidgetPrototype {
     constructor(globals, name, settings) {
         super(globals, name, settings, {
+            locales: true,
             credentials: true,
             customDataLoader: true,
             externalLibrary: {
@@ -84,15 +85,15 @@ class Widget extends WidgetPrototype {
 
         this.data.list = {
             today: {
-                label: 'Dzisiaj',
+                label: this.locales.today,
                 events: {}
             },
             tommorow: {
-                label: 'Jutro',
+                label: this.locales.tomorrow,
                 events: {}
             },
             upcoming: {
-                label: 'Nadchodzące',
+                label: this.locales.upcoming,
                 events: {}
             }
         };

@@ -13,19 +13,14 @@
                         <span class="widget-calendar__list__item__name">
                             {{ event.summary }}
                         </span>
-                        {% if event.multiplier > 1 %}
-                            <span class="widget-calendar__list__item__multiplier">
-                                &times; {{event.multiplier }}
-                            </span>
-                        {% endif %}
                         {% if event.time != false > 1 and range.label != 'Nadchodzące' %}
                             <span class="widget-calendar__list__item__time">
-                                o {{ event.time }}
+                                {{ locales.atHour }} {{ event.time }}
                             </span>
                         {% endif %}
                         {% if range.label == 'Nadchodzące' %}
                             <span class="widget-calendar__list__item__time-left">
-                                {{ event.day }} {{ event.timeLeft }} {% if event.multiplier > 1 %}pierwsze{% endif %}
+                                {{ event.day }} {{ event.timeLeft }}
                             </span>
                         {% endif %}
                     </li>
