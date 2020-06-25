@@ -15,11 +15,12 @@ class Widget extends WidgetPrototype {
         this.cycle = 1;
         this.animationTime = 500;
         this.maxCycles = 5;
-        this.svg = document.querySelector('.widget-news__meta__counter__svg svg');
-        this.slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     }
 
     run() {
+        this.svg = document.querySelector('.widget-news__meta__counter__svg svg');
+        this.slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
         this.slice.setAttribute('fill', 'rgb(255, 255, 255)');
         this.svg.appendChild(this.slice);
         setTimeout(() => {

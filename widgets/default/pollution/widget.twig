@@ -1,5 +1,5 @@
 <p class="widget-pollution__index">
-    Jakość powietrza: {{ data.index }}
+    {{ locales.label }}: {{ data.index }}
 </p>
 <ul class="widget-pollution__measurements">
     {% for measurement in data.measurements %}

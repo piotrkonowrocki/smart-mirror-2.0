@@ -38,18 +38,11 @@ const norms = {
         ranges: [50, 100, 130, 240, 380]
     }
 };
-const ratingLabels = [
-    'bardzo dobra',
-    'dobra',
-    'przeciętna',
-    'zła',
-    'bardzo zła',
-    'katastrofalna'
-];
 
 class Widget extends WidgetPrototype {
     constructor(globals, name, settings) {
         super(globals, name, settings, {
+            locales: true,
             credentials: true,
             url: '/data/pollutions.json',
             // url: 'https://airapi.airly.eu/v2/measurements/installation',
@@ -62,6 +55,17 @@ class Widget extends WidgetPrototype {
                 }
             }
         });
+    }
+
+    prepareVars() {
+        this.ratingLabels = [
+            this.locales.ratingLabels.veryGood,
+            this.locales.ratingLabels.good,
+            this.locales.ratingLabels.moderate,
+            this.locales.ratingLabels.poor,
+            this.locales.ratingLabels.veryPoor,
+            this.locales.ratingLabels.catastrophic
+        ];
     }
 
     parseData() {
@@ -91,7 +95,7 @@ class Widget extends WidgetPrototype {
                 ratings.push(item.rating);
             } else delete this.data.measurements[i];
         });
-        this.data.index = ratingLabels[Math.max.apply(Math, ratings)];
+        this.data.index = this.ratingLabels[Math.max.apply(Math, ratings)];
     }
 }
 

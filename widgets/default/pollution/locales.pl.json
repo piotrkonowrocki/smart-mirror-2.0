@@ -1,0 +1,11 @@
+{
+    "label": "Jakość powietrza",
+    "ratingLabels": {
+        "veryGood": "bardzo dobra",
+        "good": "dobra",
+        "moderate": "przeciętna",
+        "poor": "zła",
+        "veryPoor": "bardzo zła",
+        "catastrophic": "katastrofalna"
+    }
+}

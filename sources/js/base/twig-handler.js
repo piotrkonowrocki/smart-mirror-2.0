@@ -20,10 +20,10 @@ class TwigHandler {
         });
     }
 
-    async render(src, data = {}) {
+    async render(src, data = {}, locales = {}) {
         if (!Object.keys(this.templates).includes(src)) await this.loadTemplate(src);
 
-        return this.templates[src].render({data});
+        return this.templates[src].render({data, locales});
     }
 }
 

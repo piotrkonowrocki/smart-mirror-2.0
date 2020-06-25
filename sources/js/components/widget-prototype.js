@@ -26,18 +26,18 @@ class WidgetPrototype {
         if (this.params.locales) await this.loadLocales();
         if (this.params.externalLibrary) await this.loadExternalLibrary();
         if (this.params.url || this.params.rss || this.params.customDataLoader) await this.loadData();
+        this.prepareVars();
         this.parseData();
         await this.renderContent();
-        this.prepareVars();
         this.run();
         this.loop();
     }
 
     async refresh() {
         if (this.params.url || this.params.rss || this.params.customDataLoader) await this.loadData();
+        this.prepareVars();
         this.parseData();
         await this.renderContent();
-        this.prepareVars();
         this.run();
     }
 
@@ -88,6 +88,10 @@ class WidgetPrototype {
         });
     }
 
+    prepareVars() {
+        // extend purposes only
+    }
+
     async loadData() {
         const headers = this.params.headers ? this.getHeaders(this.params.headers) : {};
         const rest = this.params.rest ? this.getRest(this.params.rest) : '';
@@ -115,14 +119,10 @@ class WidgetPrototype {
     }
 
     async renderContent() {
-        const content = await twigHandler.render(`/widgets/default/${this.name}/widget.twig`, this.data);
+        const content = await twigHandler.render(`/widgets/default/${this.name}/widget.twig`, this.data, this.locales);
 
         this.widgetWrapper.innerHTML = content;
         this.widgetWrapper.classList.add('widget--loaded');
-    }
-
-    prepareVars() {
-        // extend purposes only
     }
 
     run() {
